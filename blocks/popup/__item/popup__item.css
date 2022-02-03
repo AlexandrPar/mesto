@@ -1,0 +1,8 @@
+.popup__item{
+    max-width: 358px;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #000000;
+    opacity: 0.2;
+}
