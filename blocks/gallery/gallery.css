@@ -1,0 +1,11 @@
+.gallery{
+    max-width: 100vw;
+    padding: 40px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(362px, 1fr));
+    column-gap: 17px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+}

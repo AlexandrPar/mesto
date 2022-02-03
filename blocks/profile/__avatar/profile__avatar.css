@@ -1,0 +1,7 @@
+.profile__avatar {
+    width: 168.75px;
+    height: 127.5px;
+    margin: 0 3.75px 0 0;
+    clip-path: circle(43%);
+    object-fit: contain;
+}
