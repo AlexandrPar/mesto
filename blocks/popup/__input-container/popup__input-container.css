@@ -1,4 +1,5 @@
 .popup__input-container{
+    min-width: 358px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -6,3 +7,9 @@
     padding: 0;
     margin: 0;
 }
+
+@media screen and (max-width: 425px) {
+    .popup__input-container  {
+      min-width: 238px;
+    }
+  }

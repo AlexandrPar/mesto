@@ -1,5 +1,10 @@
 .popup__content {
-    max-width: 358px;
-    margin: auto;
+  max-width: 100vh;
+  margin: 34px 64px 37px 36px;
+}
+
+@media screen and (max-width: 425px) {
+  .popup__content  {
+    margin: 25px 22px;
   }
-  
+}
