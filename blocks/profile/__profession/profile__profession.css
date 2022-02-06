@@ -10,3 +10,11 @@
     grid-column-end: 3;
     grid-row: 2;
 }
+
+@media screen and (max-width: 450px) {
+    .profile__profession {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+}
