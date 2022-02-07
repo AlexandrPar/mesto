@@ -1,8 +1,7 @@
 .profile__info {
-    max-width: 336px;
     display: grid;
     grid-template-columns: repeat(2, minmax(min-content, max-content));
-    grid-template-rows: repeat(2, 39px);
+    grid-template-rows: repeat(2, 40px);
     column-gap: 18px;
     grid-row-gap: 16px;
     align-items: stretch;

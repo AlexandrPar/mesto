@@ -1,5 +1,5 @@
 .card__caption{
-    width: 246px;
+    min-width: 246px;
     margin: 25px 21px 31px 15px;
     display: flex;
     flex-direction: row;
