@@ -6,6 +6,9 @@
     grid-row-gap: 16px;
     align-items: stretch;
     justify-items: stretch;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 450px) {

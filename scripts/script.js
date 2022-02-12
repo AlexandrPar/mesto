@@ -16,8 +16,8 @@ const closePopup = function () {
 };
 
 let fillPopup = function () {
-  nameIn.value = nameInput.innerHTML;
-  jobIn.value = jobInput.innerHTML;
+  nameIn.value = nameInput.textContent;
+  jobIn.value = jobInput.textContent;
 };
 
 function formSubmitHandler(evt) {
