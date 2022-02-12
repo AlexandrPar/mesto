@@ -21,51 +21,51 @@
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <p class="profile__profession">Исследователь океана</p>
-                    <button type="button" class="profile__edit-button"></button>
+                    <button type="button" aria-label="edit" class="profile__edit-button"></button>
                 </div>
-                <button type="button" class="profile__add-button"></button>
+                <button type="button" aria-label="add" class="profile__add-button"></button>
             </section>
             <section class="gallery">
                 <div class="card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="card__image">
                     <div class="card__caption">
                         <h3 class="card__name">Карачаевск</h3>
-                        <button type="button" class="card__like"></button>
+                        <button type="button" aria-label="like" class="card__like"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="./images/elbrus.jpg" alt="Эльбрус" class="card__image">
                     <div class="card__caption">
                         <h3 class="card__name">Гора Эльбрус</h3>
-                        <button type="button" class="card__like"></button>
+                        <button type="button" aria-label="like" class="card__like"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="./images/dombay.jpg" alt="Домбай" class="card__image">
                     <div class="card__caption">
                         <h3 class="card__name">Домбай</h3>
-                        <button type="button" class="card__like"></button>
+                        <button type="button" aria-label="like" class="card__like"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="./images/elbrus.jpg" alt="Эльбрус" class="card__image">
                     <div class="card__caption">
                         <h3 class="card__name">Гора Эльбрус</h3>
-                        <button type="button" class="card__like"></button>
+                        <button type="button" aria-label="like" class="card__like"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="./images/dombay.jpg" alt="Домбай" class="card__image">
                     <div class="card__caption">
                         <h3 class="card__name">Домбай</h3>
-                        <button type="button" class="card__like"></button>
+                        <button type="button" aria-label="like" class="card__like"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="card__image">
                     <div class="card__caption">
                         <h3 class="card__name">Карачаево-черкеск</h3>
-                        <button type="button" class="card__like"></button>
+                        <button type="button" aria-label="like" class="card__like"></button>
                     </div>
                 </div>
             </section>
@@ -75,13 +75,13 @@
         </footer>
         <div class="popup">
             <div class="popup__container">
-              <button class="popup__close"></button>
+              <button type="button" class="popup__close" aria-label="close"></button>
               <div class="popup__content">
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <form class="popup__input-container" name="input-container">
-                  <input type="text" class="popup__item popup__item_el_name" name="name">
-                  <input type="text" class="popup__item popup__item_el_profession" name="profession">
-                  <button type="submit" class="popup__save">Сохранить</button>
+                <form class="popup__input-container" name="input-container" required>
+                  <input type="text" class="popup__item popup__item_el_name" name="name" placeholder="Имя" required>
+                  <input type="text" class="popup__item popup__item_el_profession" name="profession" placeholder="О себе" required>
+                  <button type="submit" aria-label="save" class="popup__save">Сохранить</button>
                 </form>
               </div>
             </div>

@@ -9,6 +9,7 @@
     background-color: transparent;
     align-self: center;
     opacity: 1;
+    transition: 0.5s;
 }
 
 
