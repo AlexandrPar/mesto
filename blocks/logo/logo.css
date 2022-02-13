@@ -5,9 +5,16 @@
     padding: 0;
 }
 
+@media screen and (max-width: 950px) {
+    .logo {
+        margin: 35px 37px 41px 37px;
+    }
+}
+
 @media screen and (max-width: 450px) {
     .logo {
         width: 103.74px;
         height: 24.4px;
+        margin: 28px auto 31.6px 27px;
     }
 }
