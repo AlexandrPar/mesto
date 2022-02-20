@@ -80,32 +80,63 @@ const initialCards = [
   }
 ];
 
+function setEvtListeners(cardElement){
 
-initialCards.forEach(function (element) {
+  cardElement.querySelector('.card__like').addEventListener('click', cardLike);
+  cardElement.querySelector('.card__delete').addEventListener('click', cardDelite);
+  cardElement.querySelector('.card__image').addEventListener('click', openImagePopup);
+
+}
+
+
+function renderCards(element) {
   const cardElement = cardTemplate.cloneNode(true);
+  const textCard = cardElement.querySelector('.card__name');
+  const imageCard = cardElement.querySelector('.card__image');
 
-  cardElement.querySelector('.card__name').textContent = element.name;
-  cardElement.querySelector('.card__image').src = element.link;
-  cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__like_active');
-  }); 
-  cardElement.querySelector('.card__delete').addEventListener('click', function (evt) {
-    let dedicatedCard = evt.target.closest('.card');
-    dedicatedCard.remove();
-  }); 
-
-  gallery.append(cardElement);
-});
-
-function getNewItemCard(evt) {
-  evt.preventDefault();
-  const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector('.card__name').textContent = titleIn.value;
-  cardElement.querySelector('.card__image').src = linkIn.value;
-
-  gallery.append(cardElement);
+  textCard.textContent = element.name;
+  imageCard.src = element.link;
+  setEvtListeners(cardElement);
   
-  closeCardPopup();
+  gallery.appendChild(cardElement);
 };
 
-formCardElement.addEventListener('submit', getNewItemCard);
+function getNewItemCard(){
+  const cardElement = cardTemplate.cloneNode(true);
+  const textCard = cardElement.querySelector('.card__name');
+  const imageCard = cardElement.querySelector('.card__image');
+
+  textCard.textContent = titleIn.value;
+  imageCard.src = linkIn.value;
+  setEvtListeners(cardElement);
+  
+  gallery.appendChild(cardElement);
+  closeCardPopup();
+
+}
+
+formCardElement.addEventListener('submit', (evt) =>{
+
+  evt.preventDefault();
+  getNewItemCard();
+
+});
+
+function renderinitialCards(initialCards) {
+  initialCards.forEach(renderCards);
+}
+
+renderinitialCards(initialCards);
+
+function cardLike(evt){
+
+  evt.target.classList.toggle('card__like_active');
+
+}
+
+function  cardDelite(evt){
+
+  let dedicatedCard = evt.target.closest('.card');
+    dedicatedCard.remove();
+
+}
