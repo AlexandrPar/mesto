@@ -110,7 +110,7 @@ function getNewItemCard(){
   imageCard.src = linkIn.value;
   setEvtListeners(cardElement);
   
-  gallery.appendChild(cardElement);
+  gallery.prepend(cardElement);
   closeCardPopup();
 
 }
