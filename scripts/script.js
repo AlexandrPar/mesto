@@ -84,7 +84,7 @@ function setEvtListeners(cardElement){
 
   cardElement.querySelector('.card__like').addEventListener('click', cardLike);
   cardElement.querySelector('.card__delete').addEventListener('click', cardDelite);
-  cardElement.querySelector('.card__image').addEventListener('click', openImagePopup);
+
 
 }
 
