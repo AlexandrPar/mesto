@@ -1,6 +1,10 @@
 const popupProfileOpenButtonElement = document.querySelector('.profile__edit-button');
+const popupImageElement = document.querySelector('.popup_class_image');
+const imageImagePopap = popupImageElement.querySelector('.popup__image');
+const subtitelImagePopap = popupImageElement.querySelector('.popup__subtitel');
 const popupProfileElement = document.querySelector('.popup_class_profile');
 const popupCardElement = document.querySelector('.popup_class_card');
+const popupImageCloseButtonElement = popupImageElement.querySelector('.popup__close_class_image');
 const popupProfileCloseButtonElement = popupProfileElement.querySelector('.popup__close_class_profile');
 const popupCardCloseButtonElement = popupCardElement.querySelector('.popup__close_class_card');
 const gallery = document.querySelector('.gallery');
@@ -32,6 +36,10 @@ const closeCardPopup = function () {
   popupCardElement.classList.remove('popup_opened')
 };
 
+const closeImagePopup = function () {
+  popupImageElement.classList.remove('popup_opened')
+};
+
 let fillPopup = function () {
   nameIn.value = nameInput.textContent;
   jobIn.value = jobInput.textContent;
@@ -51,6 +59,7 @@ popupProfileOpenButtonElement.addEventListener('click', openProfilePopup);
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
 popupProfileCloseButtonElement.addEventListener('click', closeProfilePopup);
 popupCardCloseButtonElement.addEventListener('click', closeCardPopup);
+popupImageCloseButtonElement.addEventListener('click', closeImagePopup);
 
 
 const initialCards = [
@@ -84,6 +93,8 @@ function setEvtListeners(cardElement){
 
   cardElement.querySelector('.card__like').addEventListener('click', cardLike);
   cardElement.querySelector('.card__delete').addEventListener('click', cardDelite);
+  cardElement.querySelector('.card__image').addEventListener('click', openImagePopup);
+  cardElement.querySelector('.card__image').addEventListener('click', fillImagePopup);
 
 
 }
@@ -122,11 +133,11 @@ formCardElement.addEventListener('submit', (evt) =>{
 
 });
 
-function renderinitialCards(initialCards) {
+function renderInitialCards(initialCards) {
   initialCards.forEach(renderCards);
 }
 
-renderinitialCards(initialCards);
+renderInitialCards(initialCards);
 
 function cardLike(evt){
 
@@ -139,4 +150,19 @@ function  cardDelite(evt){
   let dedicatedCard = evt.target.closest('.card');
     dedicatedCard.remove();
 
+}
+
+function openImagePopup(){
+
+  popupImageElement.classList.add('popup_opened');
+
+}
+
+function fillImagePopup(evt){
+  let dedicatedCard = evt.target.closest('.card');
+  let textCard = dedicatedCard.querySelector('.card__name');
+  let imageCard = dedicatedCard.querySelector('.card__image');
+
+  subtitelImagePopap.textContent = textCard.textContent;
+  imageImagePopap.src = imageCard.getAttribute("src");
 }
