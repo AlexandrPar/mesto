@@ -41,8 +41,14 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileElement);
 };
 
+function clearCardPopap() {
+  openPopup(popupCardElement);
+  titleIn.value = '';
+  linkIn.value = '';
+};
+
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-popupCardOpenButtonElement.addEventListener('click', () => openPopup(popupCardElement));
+popupCardOpenButtonElement.addEventListener('click', clearCardPopap);
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
 popupProfileCloseButtonElement.addEventListener('click', () => closePopup(popupProfileElement));
 popupCardCloseButtonElement.addEventListener('click', () => closePopup(popupCardElement));
@@ -78,39 +84,38 @@ const initialCards = [
 
 function setEvtListeners(cardElement) {
 
-  cardElement.querySelector('.card__like').addEventListener('click', cardLike);
-  cardElement.querySelector('.card__delete').addEventListener('click', cardDelite);
+  cardElement.querySelector('.card__like').addEventListener('click', getLikeCard);
+  cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
   cardElement.querySelector('.card__image').addEventListener('click', handleImageClick);
 
 }
 
-function createCard(item) {
+function createCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
   const textCard = cardElement.querySelector('.card__name');
   const imageCard = cardElement.querySelector('.card__image');
 
-  textCard.textContent = item.name;
-  imageCard.src = item.link;
-  imageCard.alt = item.name;
+  textCard.textContent = name;
+  imageCard.src = link;
+  imageCard.alt = name;
   setEvtListeners(cardElement);
-  // тут создаете карточку и возвращаете ее
-  return cardElement
+  return cardElement;
 }
 
 function renderCards(element) {
-  const cardElement = createCard(element)
-  gallery.appendChild(cardElement);
+  const cardElement = createCard(element.name, element.link)
+  gallery.append(cardElement);
 };
 
-function getNewItemCard(value) {
-  const cardElement = createCard(value)
+function getNewItemCard(evt) {
 
+  evt.preventDefault();
+  const cardElement = createCard(titleIn.value, linkIn.value);
   gallery.prepend(cardElement);
-  closeCardPopup();
-
+  closePopup(popupCardElement);
 }
 
-formCardElement.addEventListener('submit',  getNewItemCard);
+formCardElement.addEventListener('submit', getNewItemCard);
 
 function renderInitialCards(initialCards) {
   initialCards.forEach(renderCards);
@@ -118,18 +123,19 @@ function renderInitialCards(initialCards) {
 
 renderInitialCards(initialCards);
 
-function cardLike(evt) {
+function getLikeCard(evt) {
 
   evt.target.classList.toggle('card__like_active');
 
 }
 
-function cardDelite(evt) {
+function deleteCard(evt) {
 
   const dedicatedCard = evt.target.closest('.card');
   dedicatedCard.remove();
 
 }
+
 function handleImageClick(evt) {
 
   openPopup(popupImageElement);
@@ -139,5 +145,7 @@ function handleImageClick(evt) {
 
   subtitelImagePopap.textContent = textCard.textContent;
   imageImagePopap.src = imageCard.getAttribute("src");
+  imageImagePopap.alt = textCard.textContent;
 
 }
+
