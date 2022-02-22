@@ -10,37 +10,24 @@ const popupCardCloseButtonElement = popupCardElement.querySelector('.popup__clos
 const gallery = document.querySelector('.gallery');
 const popupCardOpenButtonElement = document.querySelector('.profile__add-button');
 const cardTemplate = document.querySelector('#card-template').content;
-let formProfileElement = document.querySelector('.popup__input-container_class_profile');
-let nameInput = document.querySelector('.profile__name');
-let jobInput = document.querySelector('.profile__profession');
-let nameIn = formProfileElement.querySelector('.popup__item_el_name');
-let jobIn = formProfileElement.querySelector('.popup__item_el_profession');
-let formCardElement = document.querySelector('.popup__input-container_class_card');
-let titleIn = formCardElement.querySelector('.popup__item_el_title');
-let linkIn = formCardElement.querySelector('.popup__item_el_link');
+const formProfileElement = document.querySelector('.popup__input-container_class_profile');
+const nameInput = document.querySelector('.profile__name');
+const jobInput = document.querySelector('.profile__profession');
+const nameIn = formProfileElement.querySelector('.popup__item_el_name');
+const jobIn = formProfileElement.querySelector('.popup__item_el_profession');
+const formCardElement = document.querySelector('.popup__input-container_class_card');
+const titleIn = formCardElement.querySelector('.popup__item_el_title');
+const linkIn = formCardElement.querySelector('.popup__item_el_link');
 
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
 
-const openProfilePopup = function () {
-  popupProfileElement.classList.add('popup_opened')
-};
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
-const openCardPopup = function () {
-  popupCardElement.classList.add('popup_opened')
-};
-
-const closeProfilePopup = function () {
-  popupProfileElement.classList.remove('popup_opened')
-};
-
-const closeCardPopup = function () {
-  popupCardElement.classList.remove('popup_opened')
-};
-
-const closeImagePopup = function () {
-  popupImageElement.classList.remove('popup_opened')
-};
-
-let fillPopup = function () {
+const fillPopup = function () {
   nameIn.value = nameInput.textContent;
   jobIn.value = jobInput.textContent;
 };
@@ -54,12 +41,12 @@ function rewriteProfile(evt) {
 }
 
 formProfileElement.addEventListener('submit', rewriteProfile);
-popupCardOpenButtonElement.addEventListener('click', openCardPopup);
-popupProfileOpenButtonElement.addEventListener('click', openProfilePopup);
+popupCardOpenButtonElement.addEventListener('click', () => openPopup(popupCardElement));
+popupProfileOpenButtonElement.addEventListener('click', () => openPopup(popupProfileElement));
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
-popupProfileCloseButtonElement.addEventListener('click', closeProfilePopup);
-popupCardCloseButtonElement.addEventListener('click', closeCardPopup);
-popupImageCloseButtonElement.addEventListener('click', closeImagePopup);
+popupProfileCloseButtonElement.addEventListener('click', () => closePopup(popupProfileElement));
+popupCardCloseButtonElement.addEventListener('click', () => closePopup(popupCardElement));
+popupImageCloseButtonElement.addEventListener('click', () => closePopup(popupImageElement));
 
 
 const initialCards = [
@@ -147,7 +134,7 @@ function cardLike(evt){
 
 function  cardDelite(evt){
 
-  let dedicatedCard = evt.target.closest('.card');
+  const dedicatedCard = evt.target.closest('.card');
     dedicatedCard.remove();
 
 }
@@ -159,9 +146,9 @@ function openImagePopup(){
 }
 
 function fillImagePopup(evt){
-  let dedicatedCard = evt.target.closest('.card');
-  let textCard = dedicatedCard.querySelector('.card__name');
-  let imageCard = dedicatedCard.querySelector('.card__image');
+  const dedicatedCard = evt.target.closest('.card');
+  const textCard = dedicatedCard.querySelector('.card__name');
+  const imageCard = dedicatedCard.querySelector('.card__image');
 
   subtitelImagePopap.textContent = textCard.textContent;
   imageImagePopap.src = imageCard.getAttribute("src");
