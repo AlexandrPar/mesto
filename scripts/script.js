@@ -41,14 +41,8 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileElement);
 };
 
-function clearCardPopap() {
-  openPopup(popupCardElement);
-  titleIn.value = '';
-  linkIn.value = '';
-};
-
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-popupCardOpenButtonElement.addEventListener('click', clearCardPopap);
+popupCardOpenButtonElement.addEventListener('click', () =>  openPopup(popupCardElement));
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
 popupProfileCloseButtonElement.addEventListener('click', () => closePopup(popupProfileElement));
 popupCardCloseButtonElement.addEventListener('click', () => closePopup(popupCardElement));
@@ -84,7 +78,7 @@ const initialCards = [
 
 function setEvtListeners(cardElement) {
 
-  cardElement.querySelector('.card__like').addEventListener('click', getLikeCard);
+  cardElement.querySelector('.card__like').addEventListener('click', toggleLikes);
   cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
   cardElement.querySelector('.card__image').addEventListener('click', handleImageClick);
 
@@ -113,6 +107,7 @@ function getNewItemCard(evt) {
   const cardElement = createCard(titleIn.value, linkIn.value);
   gallery.prepend(cardElement);
   closePopup(popupCardElement);
+  formCardElement.reset(); 
 }
 
 formCardElement.addEventListener('submit', getNewItemCard);
@@ -123,7 +118,7 @@ function renderInitialCards(initialCards) {
 
 renderInitialCards(initialCards);
 
-function getLikeCard(evt) {
+function toggleLikes(evt) {
 
   evt.target.classList.toggle('card__like_active');
 
