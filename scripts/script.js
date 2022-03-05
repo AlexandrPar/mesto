@@ -46,9 +46,9 @@ function closePopupByKeydown(evt) {
 };
 
 function fillPopup() {
+  openPopup(popupProfileElement);
   nameIn.value = nameInput.textContent;
   jobIn.value = jobInput.textContent;
-  openPopup(popupProfileElement);
 };
 
 function handleProfileFormSubmit(evt) {
