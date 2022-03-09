@@ -18,6 +18,8 @@ const jobIn = formProfileElement.querySelector('.popup__item_el_profession');
 const formCardElement = document.querySelector('.popup__input-container_class_card');
 const titleIn = formCardElement.querySelector('.popup__item_el_title');
 const linkIn = formCardElement.querySelector('.popup__item_el_link');
+const cardFormSubmitButton = document.querySelector('.popup__save_class_card');
+const profileFormSubmitButton = document.querySelector('.popup__save_class_profile');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -60,7 +62,10 @@ function handleProfileFormSubmit(evt) {
 };
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-popupCardOpenButtonElement.addEventListener('click', () => openPopup(popupCardElement));
+popupCardOpenButtonElement.addEventListener('click', () => {
+  disableSubmitButton(cardFormSubmitButton, checkValidity.inactiveButtonClass);
+  openPopup(popupCardElement);
+});
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
 popupProfileCloseButtonElement.addEventListener('click', () => closePopup(popupProfileElement));
 popupCardCloseButtonElement.addEventListener('click', () => closePopup(popupCardElement));
