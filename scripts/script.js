@@ -46,9 +46,9 @@ function closePopupByKeydown(evt) {
 };
 
 function fillPopup() {
-  openPopup(popupProfileElement);
   nameIn.value = nameInput.textContent;
   jobIn.value = jobInput.textContent;
+  openPopup(popupProfileElement);
 };
 
 function handleProfileFormSubmit(evt) {
@@ -114,7 +114,6 @@ function createCard(name, link) {
   imageCard.src = link;
   imageCard.alt = name;
   setEvtListeners(cardElement);
-  cardElement.querySelector('.card__image').addEventListener('click', () => handleImageClick(textCard.textContent, imageCard.getAttribute("src")));
   return cardElement;
 }
 
