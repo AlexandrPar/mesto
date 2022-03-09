@@ -94,6 +94,16 @@ const initialCards = [
   }
 ];
 
+function setEvtListeners(cardElement) {
+  const cardName = cardElement.querySelector('.card__name');
+  const cardImage = cardElement.querySelector('.card__image');
+
+  cardElement.querySelector('.card__like').addEventListener('click', toggleLikes);
+  cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
+  cardElement.querySelector('.card__image').addEventListener('click', () => handleImageClick(cardName.textContent, cardImage.getAttribute("src")));
+  
+
+}
 
 function createCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -103,11 +113,8 @@ function createCard(name, link) {
   textCard.textContent = name;
   imageCard.src = link;
   imageCard.alt = name;
-
-  cardElement.querySelector('.card__like').addEventListener('click', toggleLikes);
-  cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
+  setEvtListeners(cardElement);
   cardElement.querySelector('.card__image').addEventListener('click', () => handleImageClick(textCard.textContent, imageCard.getAttribute("src")));
-  
   return cardElement;
 }
 
