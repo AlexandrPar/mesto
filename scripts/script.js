@@ -94,13 +94,6 @@ const initialCards = [
   }
 ];
 
-function setEvtListeners(cardElement) {
-
-  cardElement.querySelector('.card__like').addEventListener('click', toggleLikes);
-  cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
-  cardElement.querySelector('.card__image').addEventListener('click', handleImageClick);
-
-}
 
 function createCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -110,7 +103,11 @@ function createCard(name, link) {
   textCard.textContent = name;
   imageCard.src = link;
   imageCard.alt = name;
-  setEvtListeners(cardElement);
+
+  cardElement.querySelector('.card__like').addEventListener('click', toggleLikes);
+  cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
+  cardElement.querySelector('.card__image').addEventListener('click', () => handleImageClick(textCard.textContent, imageCard.getAttribute("src")));
+  
   return cardElement;
 }
 
@@ -129,6 +126,15 @@ function getNewItemCard(evt) {
 }
 
 formCardElement.addEventListener('submit', getNewItemCard);
+
+function handleImageClick(name, link) {
+
+  subtitelImagePopap.textContent = name;
+  imageImagePopap.src = link;
+  imageImagePopap.alt =  name;
+  openPopup(popupImageElement);
+
+}
 
 function renderInitialCards(initialCards) {
   initialCards.forEach(renderCards);
@@ -149,16 +155,5 @@ function deleteCard(evt) {
 
 }
 
-function handleImageClick(evt) {
 
-  openPopup(popupImageElement);
-  const dedicatedCard = evt.target.closest('.card');
-  const textCard = dedicatedCard.querySelector('.card__name');
-  const imageCard = dedicatedCard.querySelector('.card__image');
-
-  subtitelImagePopap.textContent = textCard.textContent;
-  imageImagePopap.src = imageCard.getAttribute("src");
-  imageImagePopap.alt = textCard.textContent;
-
-}
 
