@@ -8,16 +8,16 @@ const configValidation = {
   
   };
 
-const showError = (formElement, inputElement, errorMessage) => {
+const showError = (formElement, inputElement, errorMessage, inputErrorClass) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add('popup__item_type_error');
+    inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
 
 }
 
-const hideError = (formElement, inputElement) => {
+const hideError = (formElement, inputElement, inputErrorClass) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('popup__item_type_error');
+    inputElement.classList.remove(inputErrorClass);
     errorElement.textContent = "";
 };
 
