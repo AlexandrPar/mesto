@@ -21,6 +21,7 @@ const linkIn = formCardElement.querySelector('.popup__item_el_link');
 const cardFormSubmitButton = document.querySelector('.popup__save_class_card');
 const profileFormSubmitButton = document.querySelector('.popup__save_class_profile');
 
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByKeydown);
@@ -63,7 +64,7 @@ function handleProfileFormSubmit(evt) {
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 popupCardOpenButtonElement.addEventListener('click', () => {
-  disableSubmitButton(cardFormSubmitButton, checkValidity.inactiveButtonClass);
+  disableSubmitButton(cardFormSubmitButton, configValidation.inactiveButtonClass);
   openPopup(popupCardElement);
 });
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);

@@ -1,3 +1,13 @@
+const configValidation = {
+    formSelector: '.popup__input-container',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_disabled',
+    inputErrorClass: 'popup__item_type_error',
+    errorClass: 'popup__input-error'
+  
+  };
+
 const showError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add('popup__item_type_error');
@@ -9,16 +19,18 @@ const hideError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove('popup__item_type_error');
     errorElement.textContent = "";
-}
+};
 
 const checkValidity = (formElement, inputElement) => {
     const isInputNotValidity = !inputElement.validity.valid;
+
 
     if (isInputNotValidity) {
         const errorMessage = inputElement.validationMessage;
         showError(formElement, inputElement, errorMessage);
     } else {
         hideError(formElement, inputElement);
+       
     }
 };
 
@@ -33,14 +45,18 @@ const hasInvalidInput = (inputList) => {
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.add(inactiveButtonClass);
     buttonElement.disabled = true;
-  }
+};
+
+const unDisableSubmitButton = (buttonElement, inactiveButtonClass) => {
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
+};
 
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
     if (hasInvalidInput(inputList)) {
         disableSubmitButton(buttonElement, inactiveButtonClass);
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.removeAttribute("disabled");
+        unDisableSubmitButton (buttonElement, inactiveButtonClass);
     }
 
 };
@@ -66,11 +82,5 @@ const enableValidation = ({ formSelector, ...rest }) => {
     });
 };
 
-enableValidation({
-    formSelector: '.popup__input-container',
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_disabled',
-    inputErrorClass: 'popup__item_type_error',
-    errorClass: 'popup__input-error'
-});
+enableValidation(configValidation);
+
