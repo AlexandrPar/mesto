@@ -1,24 +1,5 @@
+import  {openPopup, closePopupByClickOnOverlay, closePopupByKeydown} from './script.js';
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByKeydown);
-    popup.addEventListener('click', closePopupByClickOnOverlay);
-  };
-
-function closePopupByClickOnOverlay(evt) {
-    if (evt.target !== evt.currentTarget) {
-      return;
-    }
-    evt.target.classList.remove('popup_opened');
-  };
-
-function closePopupByKeydown(evt) {
-    if (evt.key === 'Escape') {
-      closePopup(document.querySelector('.popup_opened'));
-    }
-  };
-  
-  
 
 const popupImageElement = document.querySelector('.popup_class_image');
 const imageImagePopap = popupImageElement.querySelector('.popup__image');

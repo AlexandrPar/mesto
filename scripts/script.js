@@ -88,6 +88,14 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileElement);
 };
 
+import Card from './card.js';
+
+initialCards.forEach((item) => {
+  const card = new Card (item, '#card-template');
+  const cardElement = card.generateCard();
+  gallery.append(cardElement);
+});
+
 function getNewItemCard(evt) {
   evt.preventDefault();
   const item = {name: titleIn.value, link: linkIn.value} 
@@ -98,23 +106,31 @@ function getNewItemCard(evt) {
   formCardElement.reset();
 };
 
-import Card from './card.js';
+const configValidation = {
+  formSelector: '.popup__input-container',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__item_type_error',
+  errorClass: 'popup__input-error'
 
-initialCards.forEach((item) => {
-  const card = new Card (item, '#card-template');
-  const cardElement = card.generateCard();
-  gallery.append(cardElement);
-});
+};
+
+import FormValidator from './validate.js'
+
+const formProfileElementValidator = new FormValidator (configValidation, formProfileElement);
+formProfileElementValidator.enableValidation();
+
+const formCardElementValidator = new FormValidator (configValidation, formCardElement);
+formCardElementValidator.enableValidation();
+
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-popupCardOpenButtonElement.addEventListener('click', () => {
-  disableSubmitButton(cardFormSubmitButton, configValidation.inactiveButtonClass);
-  openPopup(popupCardElement);
-});
+popupCardOpenButtonElement.addEventListener('click', () => { openPopup(popupCardElement)});
 formCardElement.addEventListener('submit', getNewItemCard);
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
 popupProfileCloseButtonElement.addEventListener('click', () => closePopup(popupProfileElement));
 popupCardCloseButtonElement.addEventListener('click', () => closePopup(popupCardElement));
 popupImageCloseButtonElement.addEventListener('click', () => closePopup(popupImageElement));
 
-
+export {openPopup, closePopupByClickOnOverlay, closePopupByKeydown};
