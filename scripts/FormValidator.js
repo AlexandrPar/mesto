@@ -55,7 +55,6 @@ export default class FormValidator {
     _setEventListeners() {
         this._inputList = Array.from(this._popupClass.querySelectorAll(this._config.inputSelector));
         this._buttonElement = this._popupClass.querySelector(this._config.submitButtonSelector);
-        this._toggleButtonState();
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener("input", () => {
                 this._checkValidity(inputElement);

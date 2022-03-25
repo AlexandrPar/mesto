@@ -25,28 +25,28 @@ const gallery = document.querySelector('.gallery');
 
 const initialCards = [
   {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
 
@@ -91,15 +91,15 @@ function handleProfileFormSubmit(evt) {
 import Card from './card.js';
 
 initialCards.forEach((item) => {
-  const card = new Card (item, '#card-template');
+  const card = new Card(item, '#card-template');
   const cardElement = card.generateCard();
   gallery.append(cardElement);
 });
 
 function getNewItemCard(evt) {
   evt.preventDefault();
-  const item = {name: titleIn.value, link: linkIn.value} 
-  const card = new Card (item, '#card-template');
+  const item = { name: titleIn.value, link: linkIn.value }
+  const card = new Card(item, '#card-template');
   const cardElement = card.generateCard();
   gallery.prepend(cardElement);
   closePopup(popupCardElement);
@@ -116,21 +116,25 @@ const configValidation = {
 
 };
 
-import FormValidator from './validate.js'
+import FormValidator from './FormValidator.js'
 
-const formProfileElementValidator = new FormValidator (configValidation, formProfileElement);
+const formProfileElementValidator = new FormValidator(configValidation, formProfileElement);
 formProfileElementValidator.enableValidation();
 
-const formCardElementValidator = new FormValidator (configValidation, formCardElement);
+const formCardElementValidator = new FormValidator(configValidation, formCardElement);
 formCardElementValidator.enableValidation();
 
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-popupCardOpenButtonElement.addEventListener('click', () => { openPopup(popupCardElement)});
+popupCardOpenButtonElement.addEventListener('click', () => {
+  cardFormSubmitButton.classList.add('popup__save_disabled');
+  cardFormSubmitButton.disabled = true;
+  openPopup(popupCardElement);
+});
 formCardElement.addEventListener('submit', getNewItemCard);
 popupProfileOpenButtonElement.addEventListener('click', fillPopup);
 popupProfileCloseButtonElement.addEventListener('click', () => closePopup(popupProfileElement));
 popupCardCloseButtonElement.addEventListener('click', () => closePopup(popupCardElement));
 popupImageCloseButtonElement.addEventListener('click', () => closePopup(popupImageElement));
 
-export {openPopup, closePopupByClickOnOverlay, closePopupByKeydown};
+export { openPopup, closePopupByClickOnOverlay, closePopupByKeydown };

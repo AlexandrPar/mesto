@@ -1,4 +1,4 @@
-import  {openPopup, closePopupByClickOnOverlay, closePopupByKeydown} from './script.js';
+import  {openPopup, closePopupByClickOnOverlay, closePopupByKeydown} from './index.js';
 
 
 const popupImageElement = document.querySelector('.popup_class_image');
