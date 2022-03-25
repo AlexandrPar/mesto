@@ -1,17 +1,17 @@
 export default class FormValidator {
-    constructor(config, popupClass) {
+    constructor(config, formClass) {
         this._config = config;
-        this._popupClass = popupClass;
+        this._formClass = formClass;
     };
 
     _showError(inputElement) {
-        this._errorElement = this._popupClass.querySelector(`.${inputElement.id}-error`);
+        this._errorElement = this._formClass.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._config.inputErrorClass);
         this._errorElement.textContent = inputElement.validationMessage;
     };
 
     _hideError(inputElement) {
-        this._errorElement = this._popupClass.querySelector(`.${inputElement.id}-error`);
+        this._errorElement = this._formClass.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.remove(this._config.inputErrorClass);
         this._errorElement.textContent = "";
     };
@@ -53,8 +53,8 @@ export default class FormValidator {
     };
 
     _setEventListeners() {
-        this._inputList = Array.from(this._popupClass.querySelectorAll(this._config.inputSelector));
-        this._buttonElement = this._popupClass.querySelector(this._config.submitButtonSelector);
+        this._inputList = Array.from(this._formClass.querySelectorAll(this._config.inputSelector));
+        this._buttonElement = this._formClass.querySelector(this._config.submitButtonSelector);
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener("input", () => {
                 this._checkValidity(inputElement);
@@ -65,7 +65,7 @@ export default class FormValidator {
 
     enableValidation = () => {
 
-        this._popupClass.addEventListener("submit", (evt) => {
+        this._formClass.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
         this._setEventListeners();
