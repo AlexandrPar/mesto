@@ -88,20 +88,21 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileElement);
 };
 
-import Card from './card.js';
+import Card from './Card.js';
+
+const createCard = (item) => {
+  const card = new Card(item, '#card-template');
+  return card.generateCard();
+}
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '#card-template');
-  const cardElement = card.generateCard();
-  gallery.append(cardElement);
+  gallery.append(createCard(item));
 });
 
 function getNewItemCard(evt) {
   evt.preventDefault();
   const item = { name: titleIn.value, link: linkIn.value }
-  const card = new Card(item, '#card-template');
-  const cardElement = card.generateCard();
-  gallery.prepend(cardElement);
+  gallery.prepend(createCard(item));
   closePopup(popupCardElement);
   formCardElement.reset();
 };
