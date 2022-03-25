@@ -78,6 +78,7 @@ function closePopupByKeydown(evt) {
 function fillPopup() {
   nameIn.value = nameInput.textContent;
   jobIn.value = jobInput.textContent;
+  formProfileElementValidator.toggleButtonState();
   openPopup(popupProfileElement);
 };
 
@@ -128,8 +129,7 @@ formCardElementValidator.enableValidation();
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 popupCardOpenButtonElement.addEventListener('click', () => {
-  cardFormSubmitButton.classList.add('popup__save_disabled');
-  cardFormSubmitButton.disabled = true;
+  formCardElementValidator.toggleButtonState();
   openPopup(popupCardElement);
 });
 formCardElement.addEventListener('submit', getNewItemCard);
