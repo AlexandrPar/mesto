@@ -90,15 +90,18 @@ function handleProfileFormSubmit(evt) {
 };
 
 import Card from './Card.js';
+import Section from './Section.js';
 
-const createCard = (item) => {
-  const card = new Card(item, '#card-template');
-  return card.generateCard();
-}
+const startCardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#card-template');
+    const cardElement = card.generateCard()
+    startCardList.addItem(cardElement)
+  }
+}, gallery);
 
-initialCards.forEach((item) => {
-  gallery.append(createCard(item));
-});
+startCardList.renderItems();
 
 function getNewItemCard(evt) {
   evt.preventDefault();
