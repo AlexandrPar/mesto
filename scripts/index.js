@@ -103,6 +103,27 @@ const startCardList = new Section({
 
 startCardList.renderItems();
 
+// const createCard = (item) => {
+//   const card = new Card(item, '#card-template');
+//   return card.generateCard();
+// }
+
+// const renderCard = (item) => {
+//   const card = createCard(item);
+//   cardsList.addItem(card);
+// }
+
+// const cardsList = new Section({
+//       items: initialCards,
+//       renderer: renderCard
+//   },
+//   gallery
+// );
+
+// initialCards.forEach((item) => {
+//   gallery.append(createCard(item));
+// });
+
 function getNewItemCard(evt) {
   evt.preventDefault();
   const item = { name: titleIn.value, link: linkIn.value }
