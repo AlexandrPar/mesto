@@ -23,7 +23,7 @@ export default class Popup {
 
     _closeByClickOnOverlay(event, className) {
         if (!event.target.closest(className)) {
-            this.close(event.target.closest('.popup'));
+            this.close();
         }
     }
 
@@ -32,6 +32,6 @@ export default class Popup {
             this.close();
         })
 
-        this._popup.addEventListener('click', e => this._closeByClickOnOverlay(e, '.popup__container'));
+        this._popup.addEventListener('mousedown', e => this._closeByClickOnOverlay(e, '.popup__container'));
     }
 }
