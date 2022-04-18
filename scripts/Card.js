@@ -1,16 +1,9 @@
-import { openPopup, closePopupByClickOnOverlay, closePopupByKeydown } from './index.js';
-
-
-const popupImageElement = document.querySelector('.popup_class_image');
-const imageImagePopap = popupImageElement.querySelector('.popup__image');
-const subtitelImagePopap = popupImageElement.querySelector('.popup__subtitel');
-
-
 export default class Card {
-  constructor(item, cardTemplate) {
+  constructor(item, cardTemplate, handleCardClick) {
     this._textCard = item.name;
     this._imageCard = item.link;
     this._cardTemplate = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
 
 
@@ -24,6 +17,7 @@ export default class Card {
 
     return cardElement;
   }
+
   generateCard() {
     this._element = this._getTemplete();
     this._cardImage = this._element.querySelector('.card__image');
@@ -47,12 +41,6 @@ export default class Card {
     this._element = null;
   };
 
-  _handleImageClick() {
-    subtitelImagePopap.textContent = this._textCard;
-    imageImagePopap.src = this._imageCard;
-    imageImagePopap.alt = this._textCard;
-    openPopup(popupImageElement);
-  };
 
   _setEvtListeners() {
 
@@ -62,8 +50,6 @@ export default class Card {
     this._deleteButton.addEventListener('click', () => {
       this._deleteCard();
     });
-    this._cardImage.addEventListener('click', () => {
-      this._handleImageClick();
-    });
+    this._cardImage.addEventListener('click',() => this._handleCardClick({ name: this._textCard, link: this._imageCard }));
   };
 };

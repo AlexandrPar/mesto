@@ -1,27 +1,16 @@
-export const popupProfileElement = document.querySelector('.popup_class_profile');
+export const popupProfileElement = '.popup_class_profile';
 export const popupProfileOpenButtonElement = document.querySelector('.profile__edit-button');
-export const popupProfileCloseButtonElement = popupProfileElement.querySelector('.popup__close_class_profile');
 export const formProfileElement = document.querySelector('.popup__input-container_class_profile');
-export const nameIn = formProfileElement.querySelector('.popup__item_el_name');
-export const jobIn = formProfileElement.querySelector('.popup__item_el_profession');
-export const nameInput = document.querySelector('.profile__name');
-export const jobInput = document.querySelector('.profile__profession');
-
-export const popupImageElement = document.querySelector('.popup_class_image');
-export const imageImagePopap = popupImageElement.querySelector('.popup__image');
-export const subtitelImagePopap = popupImageElement.querySelector('.popup__subtitel');
-export const popupImageCloseButtonElement = popupImageElement.querySelector('.popup__close_class_image');
-
-export const popupCardElement = document.querySelector('.popup_class_card');
-export const cardTemplate = document.querySelector('#card-template').content;
-export const popupCardCloseButtonElement = popupCardElement.querySelector('.popup__close_class_card');
+export const popupCardElement = '.popup_class_card';
+export const cardTemplate = '#card-template';
 export const popupCardOpenButtonElement = document.querySelector('.profile__add-button');
 export const formCardElement = document.querySelector('.popup__input-container_class_card');
-export const titleIn = formCardElement.querySelector('.popup__item_el_title');
-export const linkIn = formCardElement.querySelector('.popup__item_el_link');
-
-export const cardFormSubmitButton = document.querySelector('.popup__save_class_card');
 export const gallery = document.querySelector('.gallery');
+export const userName = '.profile__name';
+export const jobInput = '.profile__profession';
+export const nameIn = document.querySelector('.popup__item_el_name');
+export const jobIn = document.querySelector('.popup__item_el_profession');
+
 
 export const initialCards = [
   {
@@ -49,3 +38,13 @@ export const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+export const configValidation = {
+  formSelector: '.popup__input-container',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__item_type_error',
+  errorClass: 'popup__input-error'
+
+};
