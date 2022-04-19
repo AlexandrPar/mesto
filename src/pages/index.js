@@ -83,9 +83,7 @@ const popupProfil = new PopupWithForm(popupProfileElement, {
 const userInfo = new UserInfo(userName, jobInput);
 
 popupProfileOpenButtonElement.addEventListener('click', () => {
-  const data = userInfo.getUserInfo();
-  nameIn.value = data.name;
-  jobIn.value = data.job;
+  popupProfil.setInputValues(userInfo.getUserInfo());
   popupProfil.open();
   formProfileElementValidator.resetValidation();
 });
