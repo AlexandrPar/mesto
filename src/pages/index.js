@@ -11,8 +11,6 @@ import {
   userName,
   jobInput,
   avatar,
-  nameIn,
-  jobIn,
   configValidation,
   userId,
   popupDeleteElement,
