@@ -1,7 +1,7 @@
-export const popupProfileElement = '.popup_class_profile';
+export const popupProfileSelector = '.popup_class_profile';
 export const popupProfileOpenButtonElement = document.querySelector('.profile__edit-button');
 export const formProfileElement = document.querySelector('.popup__input-container_class_profile');
-export const popupCardElement = '.popup_class_card';
+export const popupCardSelector = '.popup_class_card';
 export const cardTemplate = '#card-template';
 export const popupCardOpenButtonElement = document.querySelector('.profile__add-button');
 export const formCardElement = document.querySelector('.popup__input-container_class_card');
@@ -12,8 +12,8 @@ export const avatar = '.profile__avatar'
 export const nameIn = document.querySelector('.popup__item_el_name');
 export const jobIn = document.querySelector('.popup__item_el_profession');
 export const userId = {};
-export const popupDeleteElement = '.popup_class_delete';
-export const popupAvatarElement = '.popup_class_avatar';
+export const popupDeleteSelector = '.popup_class_delete';
+export const popupAvatarSelector = '.popup_class_avatar';
 export const formAvatarElement = document.querySelector('.popup__input-container_class_avatar');
 export const popupAvatarOpenButtonElement = document.querySelector('.profile__avatar-replace');
 

@@ -1,9 +1,9 @@
 import '../pages/index.css';
 import {
-  popupProfileElement,
+  popupProfileSelector,
   popupProfileOpenButtonElement,
   formProfileElement,
-  popupCardElement,
+  popupCardSelector,
   cardTemplate,
   popupCardOpenButtonElement,
   formCardElement,
@@ -13,8 +13,8 @@ import {
   avatar,
   configValidation,
   userId,
-  popupDeleteElement,
-  popupAvatarElement,
+  popupDeleteSelector,
+  popupAvatarSelector,
   formAvatarElement,
   popupAvatarOpenButtonElement
 }
@@ -43,7 +43,7 @@ Promise.all([api.getProfileInfo(), api.getMassivCards()])
   .then(([item, cards]) => {
     userInfo.setUserInfo(item);
     userId.id = item._id;
-    sectionCards.renderItems(cards)
+    sectionCards.renderItems(cards.reverse())
   })
   .catch(err => {
     console.log(`Ошибка получения данных: ${err}`)
@@ -66,11 +66,10 @@ formAvatarElementValidator.enableValidation();
 const userInfo = new UserInfo(userName, jobInput, avatar);
 
 const popupProfil = new PopupWithForm(
-  popupProfileElement,
+  popupProfileSelector,
   {
     callbackSubmitForm: (data) => {
       popupProfil.loadButtom(true)
-      console.log(data)
       api.renameProfileInfo(data)
         .then((item) => {
           userInfo.setUserInfo(item);
@@ -93,13 +92,13 @@ popupProfileOpenButtonElement.addEventListener('click', () => {
 });
 
 const popupAvatar = new PopupWithForm(
-  popupAvatarElement,
+  popupAvatarSelector,
   {
     callbackSubmitForm: (item) => {
       popupAvatar.loadButtom(true)
       api.replaceProfileAvatar(item)
         .then((item) => {
-          userInfos.setUserInfo(item);
+          userInfo.setUserInfo(item);
           popupAvatar.close();
         })
         .catch(err => console.log(`Ошибка аватара: ${err}`))
@@ -134,7 +133,7 @@ const handleCardClick = (item) => {
   popupImageElement.open(item)
 }
 
-const popupConfirm = new PopupWithConfirmation(popupDeleteElement);
+const popupConfirm = new PopupWithConfirmation(popupDeleteSelector);
 popupConfirm.setEventListeners();
 
 const handleDeleteCard = (card) => {
@@ -177,7 +176,7 @@ function createCard(item) {
   return card.generateCard();
 }
 
-const cardPopup = new PopupWithForm(popupCardElement,
+const cardPopup = new PopupWithForm(popupCardSelector,
   {
     callbackSubmitForm: (item) => {
       cardPopup.loadButtom(true);
