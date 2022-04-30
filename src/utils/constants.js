@@ -8,9 +8,14 @@ export const formCardElement = document.querySelector('.popup__input-container_c
 export const gallery = document.querySelector('.gallery');
 export const userName = '.profile__name';
 export const jobInput = '.profile__profession';
+export const avatar = '.profile__avatar'
 export const nameIn = document.querySelector('.popup__item_el_name');
 export const jobIn = document.querySelector('.popup__item_el_profession');
-
+export const userId = {};
+export const popupDeleteElement = '.popup_class_delete';
+export const popupAvatarElement = '.popup_class_avatar';
+export const formAvatarElement = document.querySelector('.popup__input-container_class_avatar');
+export const popupAvatarOpenButtonElement = document.querySelector('.profile__avatar-replace');
 
 export const initialCards = [
   {

@@ -28,11 +28,19 @@ export default class PopupWithForm extends Popup {
         this._items.forEach((element) => {
             element.value = data[element.name];
         });
-      }
+    }
 
     close() {
         super.close();
         this._popupForm.reset();
 
+    }
+
+    loadButtom(load) {
+        if (load === true) {
+            this._popup.querySelector('.popup__save').textContent = 'Сохранение...';
+        } else {
+            this._popup.querySelector('.popup__save').textContent = 'Сохранить';
+        }
     }
 }
