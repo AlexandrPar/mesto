@@ -8,9 +8,9 @@ import {
   popupCardOpenButtonElement,
   formCardElement,
   gallery,
-  userName,
-  jobInput,
-  avatar,
+  userNameSelector,
+  jobInputSelector,
+  avatarSelector,
   configValidation,
   userId,
   popupDeleteSelector,
@@ -63,7 +63,7 @@ formAvatarElementValidator.enableValidation();
 
 // Работа с профилем
 
-const userInfo = new UserInfo(userName, jobInput, avatar);
+const userInfo = new UserInfo(userNameSelector, jobInputSelector, avatarSelector);
 
 const popupProfil = new PopupWithForm(
   popupProfileSelector,
